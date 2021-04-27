@@ -32,7 +32,7 @@ def js_view(request):
 
     print(x)
     y = json.dumps(x)
-    return HttpResponse(y)
+    return HttpResponse(
 
 
 
