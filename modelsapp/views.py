@@ -50,6 +50,24 @@ class StudentListCBV(SerializeMixin,View):
         qs=Student.objects.all()
         y=self.Serialize(qs)
         return HttpResponse(y, content_type='application/json')
+    def post(self,request,*args,**kwargs):
+        print("request.POST")
+        print(request.POST)
+        print("request.body")
+        print(request.body)
+        name = request.POST["name"]
+        num = request.POST.get("num")
+        roll_num = request.POST.get("roll_num")
+        college_name = request.POST.get("college_name")
+        print(name, num, roll_num, college_name)
+        # created = Student.objects.create(
+        #     name = name,
+        #     num = num,
+        #     roll_num = roll_num,
+        #     college_name = college_name
+        # )
+
+        return HttpResponse(name,' inserted successfully...')
 
 
 
