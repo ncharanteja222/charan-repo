@@ -8,3 +8,7 @@ class Student(models.Model):
 
 
 
+
+
+
+
