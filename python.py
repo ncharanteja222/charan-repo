@@ -1,16 +1,16 @@
 
 
-# lst = [5, 2, 8, 5, 7, 3, 9, 10, 6, 1,15]
-#
-# dic = {}
-#
-# for i in range(0,len(lst),2):
-#     try:
-#         dic[lst[i]] = [lst[i + 1]]
-#     except:
-#         dic[lst[i]] = 0
-#
-# print(dic)
+lst = [5, 2, 8, 5, 7, 3, 9, 10, 6, 1,15]
+
+dic = {}
+
+for i in range(0,len(lst),2):
+    try:
+        dic[lst[i]] = [lst[i + 1]]
+    except:
+        dic[lst[i]] = 0
+
+print(dic)
 #
 
 # lst = [5, 2, 8, 5, 7, 3, 9, 10, 6, 1,44]
@@ -93,26 +93,35 @@
 #
 #
 list=[3,4,5,7,8,95,4]
-# for i in range(len(list)):
-#     for j in range(i+1,len(list)):
-#         if list1[i]>list[j]:
-#             list[i],list[j]=list[j],list[i]
-# print(list)
+for i in range(len(list)):
+    for j in range(i+1,len(list)):
+        if list[i]>list[j]:
+            list[i],list[j]=list[j],list[i]
+print(list)
 # print(list[-2])
-list=[8,2,5,6,7,3]
-l=[]
-for x in range(len(list)):
-    for y in range(x+1, len(list)):
-        if list[x]+list[y]==10:
-            l.append([list[x],list[y]])
-print(l)
+# list=[8,2,5,6,7,3]x
+# l=[]
+# for x in range(len(list)):
+#     for y in range(x+1, len(list)):
+#         if list[x]+list[y]==10:
+#             l.append([list[x],list[y]])
+# print(l)
 
 a = 'stranger'
-print(a[3:-1])
-print(a[4:])
-# print(a[::-2])
-# print(range(9,3,-1))
-print(a[:-3])
+# print(len(a))
+# print(a[2])
+# print(a[1:5])
+# print(a[1:6:2])
+print(a[1:-3])
+print(a[::-2])
+
+
+
+
+
+
+# print(a[-1])
+# print(a[1])
 
 # def func(ls):
 #     for x in ls:
@@ -152,17 +161,17 @@ print(res_lst)
 
 
 
-# f=[3,3,5,7,8,9]
-# k=[]
-# o=[]
-# for x, y in enumerate(f):
-#     if x % 2 == 0:
-#         k.append(f[x])
-#     else:
-#         o.append(f[x])
-#
-# print(k)
-# print(o)
+f=[3,3,5,7,8,9]
+k=[]
+o=[]
+for x, y in enumerate(f):
+    if x % 2 == 0:
+        k.append(f[x])
+    else:
+        o.append(f[x])
+
+print(k)
+print(o)
 
 
 
@@ -179,6 +188,40 @@ for x in range(0,len(l3),2):
     except:
      d[l3[x]]=None
 print(d)
+
+# maximum value
+j=[0,4,34,55,5,6,9]
+# print(max(j))
+# for i in range(len(j)):
+#   for f in range(i+1,len(j)):
+#       if j[i]>j[f]:
+#           j[i],j[f]=j[f],j[i]
+# print(j)
+# print(j[-2])
+
+k=[3,4,5,6,89,0]
+h=k[0]
+for i in k:
+    if i>h:
+        h=i
+print(h)
+
+def art(val, list=[4,5,8]):
+    list.append(val)
+    return list
+
+
+list12 = art(10)
+# list2 = art(123, [])
+# list3 = art('a')
+print("list12 = " , list12)
+# print("list2 = %s" % list2)
+# print("list3 = %s" % list3)
+
+
+
+
+
 
 
 

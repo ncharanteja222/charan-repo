@@ -1,13 +1,52 @@
-from django.shortcuts import render
 from django.http import HttpResponse
-import json
 from modelsapp.models import Student
-from django.views.generic import View
+# from django.views.generic import View
 # from django.core.serializers import serialize
-from modelsapp.mixin import SerializeMixin
-# from rest_framework.decorators import api_view
-# from rest_framework.response import Response
-# from .Serialization import Student_serializer
+# from modelsapp.mixin import SerializeMixin
+from django.http import JsonResponse
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from modelsapp.serializers import Student_serializer
+
+@api_view(['GET'])
+def student_list(request,id=None):
+    if id is None:
+      stu_data=Student.objects.all()
+      ser=Student_serializer(stu_data,many=True)
+      return Response(ser.data)
+    else:
+      stu_data = Student.objects.get(id=id)
+      ser=Student_serializer(stu_data)
+      return Response(ser.data)
+
+@api_view(['POST'])
+def student_create(request):
+    ser=Student_serializer(data=request.data)
+    if ser.is_valid():
+        ser.save()
+        return Response(ser.data,status=200)
+    else:
+        return Response(status=400)
+@api_view(['PUT'])
+def student_update(requrest,id):
+    stu_data=Student.objects.get(id=id)
+    ser=Student_serializer(stu_data,data=requrest.data)
+    if ser.is_valid():
+        ser.save()
+        return Response(ser.data)
+    return Response('data updated successfully')
+
+@api_view(['DELETE'])
+def student_delete(request,id):
+    stu_data=Student.objects.get(id=id)
+    stu_data.delete()
+    return Response('data deleted successfully')
+
+
+
+
+
+
 
 # @api_view(['GET', 'POST'])
 # def create_view(request):
@@ -25,56 +64,6 @@ from modelsapp.mixin import SerializeMixin
 #             s.save()
 #             return Response('success'.
 #             )
-
-class StudentDetailCBV(SerializeMixin,View):
-   def get(self,request,id,*args,**kwargs):
-       print(id)
-       try:
-         stu=Student.objects.get(id = id)
-       except Student.DoesNotExist:
-         y=json.dumps({'msg':'THE REQUEST SOURCE THAT YOU ARE PROVIDED NOT AVAILABLE'})
-       else:
-       # stu_data ={
-       #   "studentname": stu.name,
-       #    "num": stu.num,
-       #    "roll_num": stu.roll_num,
-       #    "college_name": stu.college_name,
-       # }
-       # print(type(stu_data))
-         y = self.Serialize([stu])
-       # print(type(y)
-       return HttpResponse(y, content_type='application/json')
-
-class StudentListCBV(SerializeMixin,View):
-    def get(self,request,*args,**kwargs):
-        qs=Student.objects.all()
-        y=self.Serialize(qs)
-        return HttpResponse(y, content_type='application/json')
-    def post(self,request,*args,**kwargs):
-        print("request.POST")
-        print(request.POST)
-        print("request.body")
-        print(request.body)
-        name = request.POST["name"]
-        num = request.POST.get("num")
-        roll_num = request.POST.get("roll_num")
-        college_name = request.POST.get("college_name")
-        print(name, num, roll_num, college_name)
-        # created = Student.objects.create(
-        #     name = name,
-        #     num = num,
-        #     roll_num = roll_num,
-        #     college_name = college_name
-        # )
-
-        return HttpResponse(name,' inserted successfully...')
-
-
-
-
-
-
-
 
 
 

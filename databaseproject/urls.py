@@ -14,20 +14,14 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
-from modelsapp import views
-from testapp.views import *
+from django.urls import path, include
+# from rest_framework import routers
+from modelsapp import urls
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # # path('col/', views.query_fun),
-    # path('create/', views.create_view),
-    #   path('json/',views.js_view),
-    #  path('getapi/',Emp.as_view()),
-    # path('stu/',Student.as_view()),
-    path('getapi/<int:id>',views.StudentDetailCBV.as_view()),
-    path('getall/',views.StudentListCBV.as_view()),
-
-
-
+    path('modelsapp/',include('modelsapp.urls')),
+    # path('getemp/<int:id>',views.Testviewset.as_view()),
+    # path('gettingall/',views.Testviewset.as_view()),
 ]

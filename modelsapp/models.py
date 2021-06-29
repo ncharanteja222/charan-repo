@@ -5,6 +5,7 @@ class Student(models.Model):
     num=models.IntegerField(null=True)
     roll_num=models.IntegerField(null=True)
     college_name=models.CharField(max_length=50, null=True)
+    # address=models.CharField(null=True)
 
 
 
