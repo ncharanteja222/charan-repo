@@ -143,6 +143,21 @@ for i in range(0,num):
         print(i)
 
 
+# checking single number is prime or not
+def isprime(n):
+# for x in range(0,6):
+ if n>1:
+    for i in range(2,n):
+        if n%i==0:
+            return False
+    return True
+ else:
+    print('please check the number')
+
+print(isprime(10))
+
+
+
 # def extendList(val, list=[1,2,3]):
 #     list.append(val)
 #     return list
